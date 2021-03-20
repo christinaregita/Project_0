@@ -10,7 +10,7 @@ package model;
  *
  * @author acer
  */
-public class District {
+public class Employees {
     
     private int district_id;
     private String district_name;
