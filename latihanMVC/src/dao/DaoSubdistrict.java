@@ -44,10 +44,9 @@ public class DaoSubdistrict {
     PreparedStatement statement;
     //boolean result = false;
     try{
-        statement = connection.prepareStatement("UPDATE subdistrict SET subdistrict_name=? WHERE subdistrict_id=? AND district_id=? ;");
+        statement = connection.prepareStatement("UPDATE subdistrict SET subdistrict_name=? WHERE subdistrict_id=?;");
         statement.setInt(1, subdistrict.getSubdistrictId()); 
         statement.setString(2, subdistrict.getSubdistrictName()); 
-        statement.setInt(3, subdistrict.getDistrictId());
         statement.executeUpdate(); //execute
         statement.close();
         return true;

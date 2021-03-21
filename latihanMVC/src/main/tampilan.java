@@ -120,7 +120,7 @@ public class tampilan {
                 subdistrict.setDistrictId(IdDistrict);
                 
                 System.out.println();
-                System.out.println(daoprovince.insert(province)? "PROSES INSERT BERHASIL": "PROSES INSERT GAGAL");
+                System.out.println(daosubdistrict.insert(subdistrict)? "PROSES INSERT BERHASIL": "PROSES INSERT GAGAL");
             }
             else if (PilihPerintah == 2){ //UPDATE SUBDISTRICT
                 System.out.print("Masukan ID Subdistrict : ");
@@ -128,16 +128,12 @@ public class tampilan {
 
                 System.out.print("Masukan Nama Subdistrict Baru : ");
                 NamaSubdistrict = keyboard.next();
-                
-                System.out.print("Masukan ID District : ");
-                IdDistrict = keyboard.nextInt();
 
                 subdistrict.setSubdistrictId(IdSubdistrict);
                 subdistrict.setSubdistrictName(NamaSubdistrict);
-                subdistrict.setDistrictId(IdDistrict);
-
+                
                 System.out.println();
-                System.out.println(daoprovince.update(province)? "PROSES UPDATE BERHASIL": "PROSES UPDATE GAGAL");
+                System.out.println(daosubdistrict.insert(subdistrict)? "PROSES UPDATE BERHASIL": "PROSES UPDATE GAGAL");
             }
             else if (PilihPerintah == 3){ //DELETE SUBDISTRICT
                 System.out.print("Masukan ID Subdistrict yang di Hapus : ");
