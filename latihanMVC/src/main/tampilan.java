@@ -6,8 +6,10 @@
 package main;
 
 import dao.DaoProvince;
+import dao.DaoSubdistrict;
 import java.util.Scanner;
 import model.Province;
+import model.Subdistrict;
 
 /**
  *
@@ -16,6 +18,10 @@ import model.Province;
 public class tampilan {
     DaoProvince daoprovince = new DaoProvince();
     Province province = new Province();
+    
+    DaoSubdistrict daosubdistrict = new DaoSubdistrict();
+    Subdistrict subdistrict = new Subdistrict();
+    
     int PilihPerintah;
     
     public void tampilan1(){
@@ -31,14 +37,17 @@ public class tampilan {
         System.out.print("TABLE (1 / 2) : ");
         PilihTable = keyboard.nextInt();
         
+       
+        
+        if (PilihTable == 1){ //PROVINCE
         //MENAMPILKAN TABEL --> SELECT
         for (Province p : daoprovince.getAll()){
             System.out.print(p.getProvinceId());
             System.out.print(" ");
             System.out.println(p.getProvinceName());
         }
-        
-        if (PilihTable == 1){ //PROVINCE
+            System.out.println();
+            
             tampilan2(); //PILIHAN CRUD
             
             int IdProvince;
@@ -80,11 +89,66 @@ public class tampilan {
             else {
                 System.out.println("MAAF PROSES TIDAK DAPAT DILANJUTKAN");
             }
-            }
+        }  
+        else if (PilihTable == 2){ //SUBDISTRICT
+            for (Subdistrict sd : daosubdistrict.getAll()){
+            System.out.print(sd.getSubdistrictId());
+            System.out.print(" ");
+            System.out.println(sd.getSubdistrictName());
+            System.out.print(" ");
+            System.out.print(sd.getDistrictId());
+        }
+            System.out.println();
             
-        else if (PilihTable == 2){
-        System.out.println("---------------------------------------------------");
+            tampilan2(); //PILIHAN CRUD
+            int IdSubdistrict;
+            String NamaSubdistrict;
+            int IdDistrict;
 
+            if (PilihPerintah == 1){ //INSERT SUBDISTRICT
+                System.out.print("Masukan ID Subdistrict Baru : ");
+                IdSubdistrict= keyboard.nextInt();
+
+                System.out.print("Masukan Nama Subdistrict Baru : ");
+                NamaSubdistrict= keyboard.next();
+                
+                System.out.print("Masukan ID District : ");
+                IdDistrict= keyboard.nextInt();
+
+                subdistrict.setSubdistrictId(IdSubdistrict);
+                subdistrict.setSubdistrictName(NamaSubdistrict);
+                subdistrict.setDistrictId(IdDistrict);
+                
+                System.out.println();
+                System.out.println(daoprovince.insert(province)? "PROSES INSERT BERHASIL": "PROSES INSERT GAGAL");
+            }
+            else if (PilihPerintah == 2){ //UPDATE SUBDISTRICT
+                System.out.print("Masukan ID Subdistrict : ");
+                IdSubdistrict = keyboard.nextInt();
+
+                System.out.print("Masukan Nama Subdistrict Baru : ");
+                NamaSubdistrict = keyboard.next();
+                
+                System.out.print("Masukan ID District : ");
+                IdDistrict = keyboard.nextInt();
+
+                subdistrict.setSubdistrictId(IdSubdistrict);
+                subdistrict.setSubdistrictName(NamaSubdistrict);
+                subdistrict.setDistrictId(IdDistrict);
+
+                System.out.println();
+                System.out.println(daoprovince.update(province)? "PROSES UPDATE BERHASIL": "PROSES UPDATE GAGAL");
+            }
+            else if (PilihPerintah == 3){ //DELETE SUBDISTRICT
+                System.out.print("Masukan ID Subdistrict yang di Hapus : ");
+                IdSubdistrict = keyboard.nextInt();
+
+                System.out.println();
+                System.out.println(daosubdistrict.delete(subdistrict)? "PROSES DELETE BERHASIL": "PROSES DELETE GAGAL");
+            }
+            else {
+                System.out.println("MAAF PROSES TIDAK DAPAT DILANJUTKAN");
+            }
         }
         else {
             System.out.println("MAAF PROSES TIDAK DAPAT DILANJUTKAN");
