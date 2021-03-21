@@ -3,19 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package latihanmvc;
+package main;
+
+import dao.DaoProvince;
+import java.util.Scanner;
+import model.Province;
 
 /**
  *
- * @author acer
+ * @author Asus
  */
-public class LatihanMVC {
-
-    /**
-     * @param args the command line arguments
-     */
+public class Main {
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        tampilan tamp = new tampilan();
+        tamp.tampilan1();
+        System.out.println();
+        
+
     }
-    
+
 }
